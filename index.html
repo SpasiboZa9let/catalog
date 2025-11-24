@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Каталог ИИ-инструментов</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <h1 class="site-title">Каталог ИИ-инструментов</h1>
+      <p class="site-subtitle">
+        Быстрый поиск сервисов по категориям: видео, тексты, агенты, утилиты и т.д.
+      </p>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-block">
+        <h2 class="sidebar-title">Категории</h2>
+        <button class="category-btn category-btn--active" data-category="all">
+          Все инструменты
+        </button>
+        <div id="category-list" class="category-list"></div>
+      </div>
+
+      <div class="sidebar-block">
+        <h2 class="sidebar-title">Статистика</h2>
+        <p class="stat-line">
+          Всего инструментов: <span id="total-count">0</span>
+        </p>
+        <p class="stat-line">
+          Показано: <span id="visible-count">0</span>
+        </p>
+      </div>
+    </aside>
+
+    <section class="content">
+      <div class="toolbar">
+        <input
+          type="search"
+          id="search-input"
+          class="search-input"
+          placeholder="Поиск по названию, описанию или ссылке..."
+          autocomplete="off"
+        />
+      </div>
+
+      <div id="active-filters" class="active-filters"></div>
+
+      <div id="tools-list" class="tools-list">
+        <!-- Карточки инструментов рендерятся из app.js -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span>Каталог ИИ-инструментов · статика для GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
