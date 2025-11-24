@@ -1,0 +1,105 @@
+/* МОДАЛКА */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+}
+
+.modal-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(640px, 90%);
+  max-height: 80vh;
+  overflow-y: auto;
+
+  background: rgba(9, 11, 24, 0.97);
+  color: var(--text-main);
+
+  border-radius: 22px;
+  border: 1px solid var(--border-soft);
+  padding: 20px 22px 22px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
+}
+
+/* Заголовок и крестик */
+
+.modal-window h2 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(5, 7, 16, 0.9);
+  color: var(--text-soft);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition:
+    background 0.15s ease-out,
+    border-color 0.15s ease-out,
+    transform 0.15s ease-out,
+    color 0.15s ease-out;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--text-main);
+  transform: translateY(-1px);
+}
+
+/* Ссылка, текст, список шагов */
+
+.modal-link {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--accent-strong);
+  text-decoration: none;
+}
+
+.modal-link:hover {
+  text-decoration: underline;
+}
+
+.modal-summary {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: var(--text-main);
+}
+
+#modal-howto h3,
+#modal-howto > h3 {
+  margin: 0 0 4px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-soft);
+}
+
+#modal-howto-list {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  color: var(--text-main);
+}
+
+#modal-howto-list li + li {
+  margin-top: 4px;
+}
