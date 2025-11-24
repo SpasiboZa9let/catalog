@@ -1,251 +1,118 @@
-// app.js
-// Подтягиваем все тематические модули
-
+import { TOOLS_3D } from "./data/tools_3d.js";
 import { TOOLS_PROMPTS } from "./data/tools_prompts.js";
 import { TOOLS_VIDEO } from "./data/tools_video.js";
 import { TOOLS_UI } from "./data/tools_ui.js";
 import { TOOLS_LEARNING } from "./data/tools_learning.js";
 import { TOOLS_OSINT } from "./data/tools_osint.js";
-import { TOOLS_3D } from "./data/tools_3d.js";
 import { TOOLS_MUSIC } from "./data/tools_music.js";
 import { TOOLS_AGENTS } from "./data/tools_agents.js";
+import { TOOLS_PRESENTATIONS } from "./data/tools_presentations.js";
 import { TOOLS_UTILS } from "./data/tools_utils.js";
 import { TOOLS_GAMES } from "./data/tools_games.js";
-import { TOOLS_PRESENTATIONS } from "./data/tools_presentations.js";
-
-// ====== ОБЪЕДИНЁННЫЙ МАССИВ ======
 
 const TOOLS = [
+  ...TOOLS_3D,
   ...TOOLS_PROMPTS,
   ...TOOLS_VIDEO,
   ...TOOLS_UI,
   ...TOOLS_LEARNING,
   ...TOOLS_OSINT,
-  ...TOOLS_3D,
   ...TOOLS_MUSIC,
   ...TOOLS_AGENTS,
+  ...TOOLS_PRESENTATIONS,
   ...TOOLS_UTILS,
-  ...TOOLS_GAMES,
-  ...TOOLS_PRESENTATIONS
+  ...TOOLS_GAMES
 ];
 
-// ====== ЛОГИКА UI ======
+// ===== RENDER ITEMS =====
+const listEl = document.getElementById("tools-list");
+const searchEl = document.getElementById("search-input");
+const categoriesEl = document.getElementById("categories");
 
-const state = {
-  selectedCategory: "all",
-  search: ""
-};
-
-const els = {
-  categoryList: document.getElementById("category-list"),
-  toolsList: document.getElementById("tools-list"),
-  totalCount: document.getElementById("total-count"),
-  visibleCount: document.getElementById("visible-count"),
-  searchInput: document.getElementById("search-input"),
-  activeFilters: document.getElementById("active-filters")
-};
-
-function getCategories() {
-  const set = new Set(TOOLS.map((t) => t.category));
-  return Array.from(set).sort((a, b) => a.localeCompare(b, "ru"));
-}
+let currentCategory = "Все";
 
 function renderCategories() {
-  const categories = getCategories();
-  els.categoryList.innerHTML = "";
+  const cats = ["Все", ...new Set(TOOLS.map(t => t.category))];
 
-  categories.forEach((cat) => {
-    const btn = document.createElement("button");
-    btn.className = "category-btn";
-    btn.textContent = cat;
-    btn.dataset.category = cat;
-    btn.addEventListener("click", () => {
-      state.selectedCategory = cat;
-      updateCategoryButtons();
-      renderActiveFilters();
-      renderTools();
-    });
-    els.categoryList.appendChild(btn);
-  });
-
-  // Кнопка "Все инструменты" уже лежит в HTML (в aside)
-  const allBtn = document.querySelector('.category-btn[data-category="all"]');
-  if (allBtn) {
-    allBtn.addEventListener("click", () => {
-      state.selectedCategory = "all";
-      updateCategoryButtons();
-      renderActiveFilters();
-      renderTools();
-    });
-  }
-}
-
-function updateCategoryButtons() {
-  document
-    .querySelectorAll(".category-btn")
-    .forEach((btn) => btn.classList.remove("category-btn--active"));
-
-  const activeBtn = document.querySelector(
-    `.category-btn[data-category="${state.selectedCategory}"]`
-  );
-  if (activeBtn) {
-    activeBtn.classList.add("category-btn--active");
-  } else {
-    const allBtn = document.querySelector('.category-btn[data-category="all"]');
-    if (allBtn) allBtn.classList.add("category-btn--active");
-  }
-}
-
-function copyToClipboard(text) {
-  if (!navigator.clipboard) {
-    const textarea = document.createElement("textarea");
-    textarea.value = text;
-    textarea.style.position = "fixed";
-    textarea.style.left = "-9999px";
-    document.body.appendChild(textarea);
-    textarea.select();
-    try {
-      document.execCommand("copy");
-    } catch (e) {}
-    document.body.removeChild(textarea);
-    return;
-  }
-  navigator.clipboard.writeText(text).catch(() => {});
-}
-
-function getFilteredTools() {
-  const term = state.search.trim().toLowerCase();
-
-  return TOOLS.filter((tool) => {
-    if (state.selectedCategory !== "all" && tool.category !== state.selectedCategory) {
-      return false;
-    }
-
-    if (!term) return true;
-
-    const haystack = (
-      tool.name +
-      " " +
-      tool.description +
-      " " +
-      tool.url +
-      " " +
-      tool.category
-    ).toLowerCase();
-
-    return haystack.includes(term);
-  });
+  categoriesEl.innerHTML = cats
+    .map(c => `<button class="cat-btn ${currentCategory === c ? "active" : ""}">${c}</button>`)
+    .join("");
 }
 
 function renderTools() {
-  const tools = getFilteredTools();
-  els.toolsList.innerHTML = "";
+  let filtered = TOOLS;
 
-  els.totalCount.textContent = TOOLS.length.toString();
-  els.visibleCount.textContent = tools.length.toString();
-
-  if (!tools.length) {
-    const empty = document.createElement("p");
-    empty.textContent = "По заданным фильтрам ничего не найдено.";
-    empty.style.fontSize = "13px";
-    empty.style.color = "#9ca3b8";
-    els.toolsList.appendChild(empty);
-    return;
+  if (currentCategory !== "Все") {
+    filtered = filtered.filter(t => t.category === currentCategory);
   }
 
-  tools.forEach((tool) => {
-    const card = document.createElement("article");
-    card.className = "tool-card";
+  const q = searchEl.value.trim().toLowerCase();
+  if (q) filtered = filtered.filter(t => t.name.toLowerCase().includes(q));
 
-    const nameRow = document.createElement("div");
-    nameRow.className = "tool-name-row";
-
-    const nameEl = document.createElement("h3");
-    nameEl.className = "tool-name";
-    nameEl.textContent = tool.name;
-
-    const catPill = document.createElement("div");
-    catPill.className = "tool-category-pill";
-    catPill.textContent = tool.category;
-
-    nameRow.appendChild(nameEl);
-    nameRow.appendChild(catPill);
-
-    const desc = document.createElement("p");
-    desc.className = "tool-desc";
-    desc.textContent = tool.description;
-
-    const linkRow = document.createElement("div");
-    linkRow.className = "tool-link-row";
-
-    const link = document.createElement("a");
-    link.className = "tool-link";
-    link.href = tool.url;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    link.textContent = tool.url.replace(/^https?:\/\//, "");
-
-    const actions = document.createElement("div");
-    actions.className = "tool-actions";
-
-    const copyBtn = document.createElement("button");
-    copyBtn.className = "tool-btn";
-    copyBtn.textContent = "Копировать ссылку";
-    copyBtn.addEventListener("click", () => {
-      copyToClipboard(tool.url);
-    });
-
-    actions.appendChild(copyBtn);
-    linkRow.appendChild(link);
-    linkRow.appendChild(actions);
-
-    card.appendChild(nameRow);
-    card.appendChild(desc);
-    card.appendChild(linkRow);
-
-    els.toolsList.appendChild(card);
-  });
+  listEl.innerHTML = filtered
+    .map(
+      t => `
+      <div class="tool-card">
+        <h3>${t.name}</h3>
+        <p>${t.description}</p>
+        <div class="tool-actions">
+          <a href="${t.url}" target="_blank">Открыть</a>
+          <button class="more-btn" data-name="${t.name}">Подробнее</button>
+        </div>
+      </div>
+    `
+    )
+    .join("");
 }
 
-function renderActiveFilters() {
-  els.activeFilters.innerHTML = "";
+// ===== SEARCH & CATEGORIES =====
+searchEl.addEventListener("input", renderTools);
 
-  const hasCategory = state.selectedCategory !== "all";
-  const hasSearch = state.search.trim().length > 0;
-
-  if (!hasCategory && !hasSearch) return;
-
-  if (hasCategory) {
-    const catChip = document.createElement("div");
-    catChip.className = "filter-chip";
-    catChip.textContent = `Категория: ${state.selectedCategory}`;
-    els.activeFilters.appendChild(catChip);
-  }
-
-  if (hasSearch) {
-    const searchChip = document.createElement("div");
-    searchChip.className = "filter-chip";
-    searchChip.textContent = `Поиск: “${state.search.trim()}”`;
-    els.activeFilters.appendChild(searchChip);
-  }
-}
-
-function initSearch() {
-  els.searchInput.addEventListener("input", (e) => {
-    state.search = e.target.value;
-    renderActiveFilters();
-    renderTools();
-  });
-}
-
-// ====== INIT ======
-
-function init() {
+categoriesEl.addEventListener("click", e => {
+  if (!e.target.classList.contains("cat-btn")) return;
+  currentCategory = e.target.textContent.trim();
   renderCategories();
-  updateCategoryButtons();
-  initSearch();
-  renderActiveFilters();
   renderTools();
+});
+
+// ===== MODAL =====
+const modalOverlay = document.getElementById("modal-overlay");
+const modalWindow = document.getElementById("modal-window");
+const modalTitle = document.getElementById("modal-title");
+const modalUrl = document.getElementById("modal-url");
+const modalSummary = document.getElementById("modal-summary");
+const modalHowToList = document.getElementById("modal-howto-list");
+const modalClose = document.getElementById("modal-close");
+
+document.addEventListener("click", e => {
+  if (e.target.classList.contains("more-btn")) {
+    const name = e.target.dataset.name;
+    const tool = TOOLS.find(t => t.name === name);
+    openModal(tool);
+  }
+});
+
+function openModal(tool) {
+  modalTitle.textContent = tool.name;
+  modalUrl.href = tool.url;
+  modalSummary.textContent = tool.summary;
+
+  modalHowToList.innerHTML = tool.howTo
+    .map(step => `<li>${step}</li>`)
+    .join("");
+
+  modalOverlay.classList.remove("hidden");
+  modalWindow.classList.remove("hidden");
 }
 
-document.addEventListener("DOMContentLoaded", init);
+function closeModal() {
+  modalOverlay.classList.add("hidden");
+  modalWindow.classList.add("hidden");
+}
+
+modalOverlay.addEventListener("click", closeModal);
+modalClose.addEventListener("click", closeModal);
+
+// ===== INIT =====
+renderCategories();
+renderTools();
