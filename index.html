@@ -2,66 +2,58 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Каталог ИИ-инструментов</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="stylesheet" href="./styles.css" />
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="site-header__inner">
-      <h1 class="site-title">Каталог ИИ-инструментов</h1>
-      <p class="site-subtitle">
-        Быстрый поиск сервисов по категориям: видео, тексты, агенты, утилиты и т.д.
-      </p>
-    </div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <h1>Каталог ИИ-инструментов</h1>
   </header>
 
-  <main class="layout">
-    <aside class="sidebar">
-      <div class="sidebar-block">
-        <h2 class="sidebar-title">Категории</h2>
-        <button class="category-btn category-btn--active" data-category="all">
-          Все инструменты
-        </button>
-        <div id="category-list" class="category-list"></div>
-      </div>
+  <!-- SEARCH + CATEGORIES -->
+  <section class="top-bar">
+    <input
+      id="search-input"
+      type="text"
+      placeholder="Поиск инструментов…"
+      class="search-input"
+    />
 
-      <div class="sidebar-block">
-        <h2 class="sidebar-title">Статистика</h2>
-        <p class="stat-line">
-          Всего инструментов: <span id="total-count">0</span>
-        </p>
-        <p class="stat-line">
-          Показано: <span id="visible-count">0</span>
-        </p>
-      </div>
-    </aside>
+    <div id="categories" class="categories"></div>
+  </section>
 
-    <section class="content">
-      <div class="toolbar">
-        <input
-          type="search"
-          id="search-input"
-          class="search-input"
-          placeholder="Поиск по названию, описанию или ссылке..."
-          autocomplete="off"
-        />
-      </div>
-
-      <div id="active-filters" class="active-filters"></div>
-
-      <div id="tools-list" class="tools-list">
-        <!-- Карточки инструментов рендерятся из app.js -->
-      </div>
-    </section>
+  <!-- TOOL LIST -->
+  <main>
+    <div id="tools-list" class="tools-list"></div>
   </main>
 
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <span>Каталог ИИ-инструментов · статика для GitHub Pages</span>
-    </div>
-  </footer>
+  <!-- ====================== MODAL ====================== -->
 
+  <div id="modal-overlay" class="modal-overlay hidden"></div>
+
+  <div id="modal-window" class="modal-window hidden">
+    <button id="modal-close" class="modal-close">×</button>
+
+    <h2 id="modal-title"></h2>
+
+    <a id="modal-url" href="#" target="_blank" class="modal-link">
+      Открыть инструмент
+    </a>
+
+    <p id="modal-summary" class="modal-summary"></p>
+
+    <div id="modal-howto">
+      <h3>Как использовать:</h3>
+      <ul id="modal-howto-list"></ul>
+    </div>
+  </div>
+
+  <!-- JS -->
   <script type="module" src="./app.js"></script>
 </body>
 </html>
