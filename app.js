@@ -29,85 +29,36 @@ const TOOLS = [
   ...TOOLS_PRESENTATIONS
 ];
 
-// ====== ЛОГИКА UI ======
+// ====== СОСТОЯНИЕ ======
 
 const state = {
   selectedCategory: "all",
   search: "",
-  modalTool: null,
-  isModalOpen: false
+  modalTool: null
 };
+
+// ====== ЭЛЕМЕНТЫ DOM ======
 
 const els = {
-  categoryList: document.getElementById("category-list"),
+  categories: document.getElementById("categories"),
   toolsList: document.getElementById("tools-list"),
-  totalCount: document.getElementById("total-count"),
-  visibleCount: document.getElementById("visible-count"),
   searchInput: document.getElementById("search-input"),
-  activeFilters: document.getElementById("active-filters")
+
+  modalOverlay: document.getElementById("modal-overlay"),
+  modalWindow: document.getElementById("modal-window"),
+  modalClose: document.getElementById("modal-close"),
+  modalTitle: document.getElementById("modal-title"),
+  modalUrl: document.getElementById("modal-url"),
+  modalSummary: document.getElementById("modal-summary"),
+  modalHowtoList: document.getElementById("modal-howto-list")
 };
 
-// элементы модалки инициализируем позже, когда DOM точно построен
-let modalEls = {
-  overlay: null,
-  title: null,
-  link: null,
-  category: null,
-  description: null,
-  summary: null,
-  howto: null,
-  closeBtn: null
-};
+// ====== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ======
 
 function getCategories() {
   const set = new Set(TOOLS.map((t) => t.category));
-  return Array.from(set).sort((a, b) => a.localeCompare(b, "ru"));
-}
-
-function renderCategories() {
-  const categories = getCategories();
-  els.categoryList.innerHTML = "";
-
-  categories.forEach((cat) => {
-    const btn = document.createElement("button");
-    btn.className = "category-btn";
-    btn.textContent = cat;
-    btn.dataset.category = cat;
-    btn.addEventListener("click", () => {
-      state.selectedCategory = cat;
-      updateCategoryButtons();
-      renderActiveFilters();
-      renderTools();
-    });
-    els.categoryList.appendChild(btn);
-  });
-
-  // Кнопка "Все инструменты" уже лежит в HTML (в aside)
-  const allBtn = document.querySelector('.category-btn[data-category="all"]');
-  if (allBtn) {
-    allBtn.addEventListener("click", () => {
-      state.selectedCategory = "all";
-      updateCategoryButtons();
-      renderActiveFilters();
-      renderTools();
-    });
-  }
-}
-
-function updateCategoryButtons() {
-  document
-    .querySelectorAll(".category-btn")
-    .forEach((btn) => btn.classList.remove("category-btn--active"));
-
-  const activeBtn = document.querySelector(
-    `.category-btn[data-category="${state.selectedCategory}"]`
-  );
-  if (activeBtn) {
-    activeBtn.classList.add("category-btn--active");
-  } else {
-    const allBtn = document.querySelector('.category-btn[data-category="all"]');
-    if (allBtn) allBtn.classList.add("category-btn--active");
-  }
+  const arr = Array.from(set).sort((a, b) => a.localeCompare(b, "ru"));
+  return arr;
 }
 
 function copyToClipboard(text) {
@@ -127,6 +78,51 @@ function copyToClipboard(text) {
   navigator.clipboard.writeText(text).catch(() => {});
 }
 
+// ====== РЕНДЕР КАТЕГОРИЙ ======
+
+function renderCategories() {
+  const categories = getCategories();
+  els.categories.innerHTML = "";
+
+  // Кнопка "Все"
+  const allBtn = document.createElement("button");
+  allBtn.className = "category-btn category-btn--active";
+  allBtn.dataset.category = "all";
+  allBtn.textContent = "Все";
+  allBtn.addEventListener("click", () => {
+    state.selectedCategory = "all";
+    updateCategoryButtons();
+    renderTools();
+  });
+  els.categories.appendChild(allBtn);
+
+  // Остальные категории
+  categories.forEach((cat) => {
+    const btn = document.createElement("button");
+    btn.className = "category-btn";
+    btn.dataset.category = cat;
+    btn.textContent = cat;
+    btn.addEventListener("click", () => {
+      state.selectedCategory = cat;
+      updateCategoryButtons();
+      renderTools();
+    });
+    els.categories.appendChild(btn);
+  });
+}
+
+function updateCategoryButtons() {
+  const buttons = els.categories.querySelectorAll(".category-btn");
+  buttons.forEach((btn) => {
+    btn.classList.remove("category-btn--active");
+    if (btn.dataset.category === state.selectedCategory) {
+      btn.classList.add("category-btn--active");
+    }
+  });
+}
+
+// ====== ФИЛЬТРАЦИЯ ======
+
 function getFilteredTools() {
   const term = state.search.trim().toLowerCase();
 
@@ -137,34 +133,31 @@ function getFilteredTools() {
 
     if (!term) return true;
 
-    const haystack = (
-      tool.name +
+    const haystack =
+      (tool.name || "") +
       " " +
-      tool.description +
+      (tool.description || "") +
       " " +
       (tool.summary || "") +
       " " +
-      tool.url +
+      (tool.url || "") +
       " " +
-      tool.category
-    ).toLowerCase();
+      (tool.category || "");
 
-    return haystack.includes(term);
+    return haystack.toLowerCase().includes(term);
   });
 }
+
+// ====== РЕНДЕР КАРТОЧЕК ======
 
 function renderTools() {
   const tools = getFilteredTools();
   els.toolsList.innerHTML = "";
 
-  els.totalCount.textContent = TOOLS.length.toString();
-  els.visibleCount.textContent = tools.length.toString();
-
   if (!tools.length) {
     const empty = document.createElement("p");
     empty.textContent = "По заданным фильтрам ничего не найдено.";
-    empty.style.fontSize = "13px";
-    empty.style.color = "#9ca3b8";
+    empty.className = "tools-empty";
     els.toolsList.appendChild(empty);
     return;
   }
@@ -173,19 +166,9 @@ function renderTools() {
     const card = document.createElement("article");
     card.className = "tool-card";
 
-    const nameRow = document.createElement("div");
-    nameRow.className = "tool-name-row";
-
-    const nameEl = document.createElement("h3");
-    nameEl.className = "tool-name";
-    nameEl.textContent = tool.name;
-
-    const catPill = document.createElement("div");
-    catPill.className = "tool-category-pill";
-    catPill.textContent = tool.category;
-
-    nameRow.appendChild(nameEl);
-    nameRow.appendChild(catPill);
+    const title = document.createElement("h3");
+    title.className = "tool-title";
+    title.textContent = tool.name;
 
     const desc = document.createElement("p");
     desc.className = "tool-desc";
@@ -206,7 +189,7 @@ function renderTools() {
 
     const copyBtn = document.createElement("button");
     copyBtn.className = "tool-btn";
-    copyBtn.textContent = "Копировать ссылку";
+    copyBtn.textContent = "Копировать";
     copyBtn.addEventListener("click", () => {
       copyToClipboard(tool.url);
     });
@@ -215,15 +198,16 @@ function renderTools() {
     detailsBtn.className = "tool-btn tool-btn-secondary";
     detailsBtn.textContent = "Подробнее";
     detailsBtn.addEventListener("click", () => {
-      openToolModal(tool);
+      openModal(tool);
     });
 
     actions.appendChild(copyBtn);
     actions.appendChild(detailsBtn);
+
     linkRow.appendChild(link);
     linkRow.appendChild(actions);
 
-    card.appendChild(nameRow);
+    card.appendChild(title);
     card.appendChild(desc);
     card.appendChild(linkRow);
 
@@ -231,128 +215,77 @@ function renderTools() {
   });
 }
 
-function renderActiveFilters() {
-  els.activeFilters.innerHTML = "";
-
-  const hasCategory = state.selectedCategory !== "all";
-  const hasSearch = state.search.trim().length > 0;
-
-  if (!hasCategory && !hasSearch) return;
-
-  if (hasCategory) {
-    const catChip = document.createElement("div");
-    catChip.className = "filter-chip";
-    catChip.textContent = `Категория: ${state.selectedCategory}`;
-    els.activeFilters.appendChild(catChip);
-  }
-
-  if (hasSearch) {
-    const searchChip = document.createElement("div");
-    searchChip.className = "filter-chip";
-    searchChip.textContent = `Поиск: “${state.search.trim()}”`;
-    els.activeFilters.appendChild(searchChip);
-  }
-}
-
-function initSearch() {
-  els.searchInput.addEventListener("input", (e) => {
-    state.search = e.target.value;
-    renderActiveFilters();
-    renderTools();
-  });
-}
-
 // ====== МОДАЛКА ======
 
-function initModal() {
-  const overlay = document.getElementById("tool-modal");
-  if (!overlay) return; // если ты ещё не добавил HTML модалки — просто пропускаем
-
-  const title = document.getElementById("modal-title");
-  const link = document.getElementById("modal-link");
-  const category = document.getElementById("modal-category");
-  const description = document.getElementById("modal-description");
-  const summary = document.getElementById("modal-summary");
-  const howto = document.getElementById("modal-howto");
-  const closeBtn = overlay.querySelector(".modal-close");
-
-  modalEls = {
-    overlay,
-    title,
-    link,
-    category,
-    description,
-    summary,
-    howto,
-    closeBtn
-  };
-
-  if (closeBtn) {
-    closeBtn.addEventListener("click", () => {
-      closeToolModal();
-    });
-  }
-
-  overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) {
-      closeToolModal();
-    }
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && state.isModalOpen) {
-      closeToolModal();
-    }
-  });
-}
-
-function openToolModal(tool) {
-  if (!modalEls.overlay) return; // на случай, если HTML модалки ещё нет
-
+function openModal(tool) {
   state.modalTool = tool;
-  state.isModalOpen = true;
 
-  // заполняем заголовок и ссылку
-  modalEls.title.textContent = tool.name || "";
-  const url = tool.url || "#";
-  modalEls.link.href = url;
-  modalEls.link.textContent = url.replace(/^https?:\/\//, "");
-  modalEls.category.textContent = tool.category || "";
+  if (!els.modalOverlay || !els.modalWindow) return;
 
-  // базовое описание
-  modalEls.description.textContent = tool.description || "";
+  els.modalTitle.textContent = tool.name || "";
+  els.modalUrl.href = tool.url || "#";
+  els.modalUrl.textContent = tool.url
+    ? tool.url.replace(/^https?:\/\//, "")
+    : "Ссылка недоступна";
 
   // summary: если нет — используем description
   const summaryText = tool.summary || tool.description || "";
-  modalEls.summary.textContent = summaryText || "Краткое описание пока не добавлено.";
+  els.modalSummary.textContent =
+    summaryText || "Краткое описание этого инструмента пока не добавлено.";
 
-  // howTo: если массив — рисуем шаги; если нет — заглушка
-  modalEls.howto.innerHTML = "";
+  // howTo: массив шагов, иначе заглушка
+  els.modalHowtoList.innerHTML = "";
   if (Array.isArray(tool.howTo) && tool.howTo.length > 0) {
     tool.howTo.forEach((step) => {
       const li = document.createElement("li");
       li.textContent = step;
-      modalEls.howto.appendChild(li);
+      els.modalHowtoList.appendChild(li);
     });
   } else {
     const li = document.createElement("li");
     li.textContent = "Инструкция ещё не добавлена.";
-    modalEls.howto.appendChild(li);
+    els.modalHowtoList.appendChild(li);
   }
 
-  modalEls.overlay.hidden = false;
-  modalEls.overlay.classList.add("modal-open");
+  els.modalOverlay.classList.remove("hidden");
+  els.modalWindow.classList.remove("hidden");
   document.body.classList.add("modal-open");
 }
 
-function closeToolModal() {
-  if (!modalEls.overlay) return;
-
+function closeModal() {
   state.modalTool = null;
-  state.isModalOpen = false;
-  modalEls.overlay.classList.remove("modal-open");
-  modalEls.overlay.hidden = true;
+  if (!els.modalOverlay || !els.modalWindow) return;
+  els.modalOverlay.classList.add("hidden");
+  els.modalWindow.classList.add("hidden");
   document.body.classList.remove("modal-open");
+}
+
+function initModal() {
+  if (!els.modalOverlay || !els.modalWindow) return;
+
+  els.modalClose?.addEventListener("click", () => {
+    closeModal();
+  });
+
+  els.modalOverlay.addEventListener("click", () => {
+    closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !els.modalWindow.classList.contains("hidden")) {
+      closeModal();
+    }
+  });
+}
+
+// ====== ПОИСК ======
+
+function initSearch() {
+  if (!els.searchInput) return;
+  els.searchInput.addEventListener("input", (e) => {
+    state.search = e.target.value;
+    renderTools();
+  });
 }
 
 // ====== INIT ======
@@ -361,7 +294,6 @@ function init() {
   renderCategories();
   updateCategoryButtons();
   initSearch();
-  renderActiveFilters();
   renderTools();
   initModal();
 }
