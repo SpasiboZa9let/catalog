@@ -5,7 +5,7 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(4px);
-  z-index: 1000;
+  z-index: 900; /* ниже окна */
 }
 
 .modal-window {
@@ -24,6 +24,7 @@
   border: 1px solid var(--border-soft);
   padding: 20px 22px 22px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
+  z-index: 901; /* поверх оверлея */
 }
 
 /* Заголовок и крестик */
@@ -102,4 +103,13 @@
 
 #modal-howto-list li + li {
   margin-top: 4px;
+}
+
+/* Мобильная адаптация */
+
+@media (max-width: 640px) {
+  .modal-window {
+    width: 94%;
+    padding: 16px 14px 18px;
+  }
 }
