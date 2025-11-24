@@ -1,0 +1,30 @@
+/* АДАПТИВ */
+
+@media (max-width: 900px) {
+  main {
+    padding: 0 16px 18px;
+  }
+
+  .top-bar {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 16px 16px 8px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .tools-list {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-window {
+    width: 94%;
+    padding: 16px 14px 18px;
+  }
+}
