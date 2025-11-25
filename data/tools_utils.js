@@ -2,7 +2,7 @@ export const TOOLS_UTILS = [
   {
     name: "Free Background Remover",
     url: "https://free-background-remover.com/uploads",
-    category: "Утилиты / Изображения / Обработка",
+    category: "Утилиты",
     description:
       "Быстрый автоматический инструмент для удаления фона с изображений.",
     summary:
@@ -18,7 +18,7 @@ export const TOOLS_UTILS = [
   {
     name: "BEN2",
     url: "https://huggingface.co/spaces/PramaLLC/BEN2",
-    category: "Утилиты / Изображения / Обработка",
+    category: "Утилиты",
     description:
       "ИИ для удаления фона с фото и видео. Даёт аккуратные маски, хорошо работает с волосами.",
     summary:
@@ -34,7 +34,7 @@ export const TOOLS_UTILS = [
   {
     name: "Snack It (SnackPrompt)",
     url: "http://snackprompt.com/feature/snack-it",
-    category: "Утилиты / Текст / Анализ",
+    category: "Утилиты",
     description:
       "Инструмент, который делает краткое саммари из текста, страницы, видео или PDF.",
     summary:
@@ -50,7 +50,7 @@ export const TOOLS_UTILS = [
   {
     name: "Toolbrew",
     url: "http://toolbrew.co/",
-    category: "Утилиты / Мультитулы",
+    category: "Утилиты",
     description:
       "Большой набор онлайн-инструментов: конвертеры, шифры, генераторы, форматтеры, анализаторы.",
     summary:
@@ -67,7 +67,7 @@ export const TOOLS_UTILS = [
   {
     name: "4me.tools",
     url: "https://4me.tools/",
-    category: "Утилиты / Мультитулы",
+    category: "Утилиты",
     description:
       "Набор PDF-инструментов, конвертеров, редакторов изображений и текстовых утилит.",
     summary:
