@@ -3,7 +3,7 @@
 .header {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 20px 22px 10px;
+  padding: 20px 20px 8px; /* верх 20, горизонт 20, низ 8 */
 }
 
 .header h1 {
@@ -22,11 +22,11 @@
 
 .top-bar {
   max-width: 1120px;
-  margin: 0 auto 18px;
-  padding: 0 22px 10px;
+  margin: 0 auto 16px; /* отступ вниз до грида */
+  padding: 0 20px 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px; /* между поиском и категориями */
 }
 
 /* Поисковая строка */
@@ -59,14 +59,9 @@
 .categories {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 8px;          /* одинаковый шаг */
   margin-top: 2px;
-  padding-bottom: 2px;
 }
-
-/* если захочешь сделать скролл по одной строке:
-   добавь к контейнеру класса scroll-x в HTML:
-   <div id="categories" class="categories scroll-x"></div> */
 
 .category-btn {
   padding: 5px 10px;
@@ -103,6 +98,6 @@
 
 main {
   max-width: 1120px;
-  margin: 0 auto 22px;
-  padding: 0 22px 18px;
+  margin: 0 auto 20px;
+  padding: 0 20px 16px; /* консистент с шапкой и top-bar */
 }
