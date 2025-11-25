@@ -2,7 +2,7 @@ export const TOOLS_OSINT = [
   {
     name: "Doppio Labs",
     url: "https://www.doppio-labs.com/",
-    category: "OSINT / Поиск / Аналитика",
+    category: "OSINT и поиск",
     description:
       "Инструмент для поиска информации о людях, компаниях и доменах. Собирает цифровой след.",
     summary:
@@ -19,7 +19,7 @@ export const TOOLS_OSINT = [
   {
     name: "FilePursuit",
     url: "https://filepursuit.com/",
-    category: "OSINT / Поиск / Файлы",
+    category: "OSINT и поиск",
     description:
       "Поисковик по файлам: книги, PDF, архивы, программы, документы, музыка.",
     summary:
@@ -36,7 +36,7 @@ export const TOOLS_OSINT = [
   {
     name: "Mohmal (Temp Mail)",
     url: "http://mohmal.com/",
-    category: "OSINT / Анонимность / Почта",
+    category: "OSINT и поиск",
     description:
       "Одноразовая временная почта на 45 минут. Полезно для быстрой и анонимной регистрации.",
     summary:
