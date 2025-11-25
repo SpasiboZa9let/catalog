@@ -2,7 +2,7 @@ export const TOOLS_GAMES = [
   {
     name: "DreamLab",
     url: "https://app.dreamlab.gg/",
-    category: "Игры / Генерация игровых миров",
+    category: "Игры",
     description:
       "Платформа, которая превращает идею игры в рабочий прототип: генерация логики, уровней, объектов, текстур и UI.",
     summary:
