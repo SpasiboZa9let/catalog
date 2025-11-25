@@ -26,6 +26,7 @@
   gap: 8px;
   transition: transform var(--transition-med), box-shadow var(--transition-med),
     border-color var(--transition-med), background var(--transition-med);
+  min-height: 150px; /* лёгкая выравнивалка по высоте */
 }
 
 .tool-card:hover {
@@ -37,21 +38,20 @@
 
 /* Верхняя строка: название + категория */
 
-.tool-card h2 {
-  margin: 0;
-  font-size: 14px;
-  letter-spacing: 0.02em;
-}
-
-/* можно добавить класс для категории, если в JS понадобится;
-   пока просто стилизуем span в первой строке */
-
 .tool-card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 6px;
 }
+
+.tool-card h2 {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+}
+
+/* бейдж категории */
 
 .tool-card-category {
   font-size: 10px;
@@ -65,17 +65,22 @@
   flex-shrink: 0;
 }
 
-/* основное описание */
+/* основное описание — ОГРАНИЧИВАЕМ по строкам */
 
 .tool-card-description {
   font-size: 12px;
   color: var(--text-muted);
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;      /* максимум 3 строки */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-/* краткое summary/теги снизу */
+/* футер: теги / кнопка */
 
 .tool-card-footer {
-  margin-top: 2px;
+  margin-top: 4px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -96,7 +101,7 @@
   color: var(--text-soft);
 }
 
-/* кнопка "подробнее" / "открыть" в карточке, если захочешь добавить */
+/* кнопка "Подробнее", если будешь использовать */
 
 .tool-btn {
   border-radius: var(--radius-pill);
