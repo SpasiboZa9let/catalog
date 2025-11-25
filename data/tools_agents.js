@@ -20,7 +20,7 @@ export const TOOLS_AGENTS = [
   {
     name: "Manus",
     url: "https://manus.im/",
-    category: "Автоматизация / Агенты",
+    category: "Агенты и  автоматизация",
     description:
       "Автономный ИИ-агент нового поколения, способный анализировать задачи, писать тексты, генерировать файлы и запускать код.",
     summary:
@@ -38,7 +38,7 @@ export const TOOLS_AGENTS = [
   {
     name: "Pokee Workflow Agent",
     url: "https://pokee.ai/workflow-agent",
-    category: "Автоматизация / Агенты",
+    category: "Агенты и  автоматизация",
     description:
       "Инструмент для автоматизации рутинных процессов через построение workflow-цепочек.",
     summary:
@@ -56,7 +56,7 @@ export const TOOLS_AGENTS = [
   {
     name: "Same.dev",
     url: "https://same.dev/chat",
-    category: "Автоматизация / Агенты",
+    category: "Агенты и  автоматизация",
     description:
       "Сервис для копирования сайтов: создаёт рабочий HTML/JS-клон любой страницы.",
     summary:
@@ -74,7 +74,7 @@ export const TOOLS_AGENTS = [
   {
     name: "Pake",
     url: "https://github.com/tw93/Pake/",
-    category: "Автоматизация / Агенты",
+    category: "Агенты и  автоматизация",
     description:
       "CLI-инструмент, который превращает сайт в desktop-приложение через WebView.",
     summary:
