@@ -2,7 +2,7 @@ export const TOOLS_AGENTS = [
   {
     name: "Caesr AI",
     url: "https://www.caesr.ai/",
-    category: "Автоматизация / Агенты",
+    category: "Агенты и  автоматизация",
     description:
       "Платформа для создания автономных ИИ-агентов под задачи автоматизации, анализа, коммуникации и контента.",
     summary:
