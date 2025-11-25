@@ -20,7 +20,7 @@ export const TOOLS_3D = [
   {
     name: "Odyssey 2 (Odyssey ML)",
     url: "https://experience.odyssey.ml/",
-    category: "3D / Миры / Интерактивы",
+    category: "3D",
     description:
       "Продвинутая версия Odyssey для генерации 3D-видео и динамических сцен с движением камеры.",
     summary:
@@ -38,7 +38,7 @@ export const TOOLS_3D = [
   {
     name: "BioDigital Human",
     url: "https://human.biodigital.com/explore",
-    category: "3D / Миры / Интерактивы",
+    category: "3D",
     description:
       "Интерактивный 3D-атлас человеческого тела: органы, мышцы, нервная система, патологии и анимации.",
     summary:
