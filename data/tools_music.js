@@ -2,7 +2,7 @@ export const TOOLS_MUSIC = [
   {
     name: "DiffRhythm",
     url: "https://diffrhythm.ai/",
-    category: "Музыка / Аудио / Голос",
+    category: "Музыка и голос",
     description:
       "Генератор музыки и вокала на диффузионных моделях: песни, биты, саундтреки, стили.",
     summary:
@@ -19,7 +19,7 @@ export const TOOLS_MUSIC = [
   {
     name: "Producer AI",
     url: "https://www.producer.ai/",
-    category: "Музыка / Аудио / Голос",
+    category: "Музыка и голос",
     description:
       "Генератор песен, битов и вокала — альтернатива Suno с большим контролем.",
     summary:
@@ -37,7 +37,7 @@ export const TOOLS_MUSIC = [
   {
     name: "MusicGPT",
     url: "https://musicgpt.com/",
-    category: "Музыка / Аудио / Голос",
+    category: "Музыка и голос",
     description:
       "Модель-композитор: создает мелодии, вокал, партии инструментов и эффекты.",
     summary:
@@ -54,7 +54,7 @@ export const TOOLS_MUSIC = [
   {
     name: "NeuTTS-Air",
     url: "https://huggingface.co/spaces/neuphonic/neutts-air",
-    category: "Музыка / Аудио / Голос",
+    category: "Музыка и голос",
     description:
       "Локальный синтез и клонирование голоса через WebGPU — быстро и без отправки данных.",
     summary:
@@ -71,7 +71,7 @@ export const TOOLS_MUSIC = [
   {
     name: "Kokoro WebGPU",
     url: "https://huggingface.co/spaces/webml-community/kokoro-webgpu",
-    category: "Музыка / Аудио / Голос",
+    category: "Музыка и голос",
     description:
       "Бесплатный ИИ-озвучиватель с естественным голосом. Работает локально через WebGPU.",
     summary:
