@@ -19,7 +19,7 @@ export const TOOLS_PRESENTATIONS = [
   {
     name: "AllWeOne Presentation AI",
     url: "https://presentation.allweone.com/",
-    category: "Презентации / Слайды",
+    category: "Слайды → Презентации",
     description:
       "Генератор презентаций по теме: создаёт структуру, текст и оформление слайдов.",
     summary:
@@ -52,7 +52,7 @@ export const TOOLS_PRESENTATIONS = [
   {
     name: "Slidesorator",
     url: "https://www.slidesorator.com/",
-    category: "Презентации / Слайды",
+    category: "Слайды → Презентации",
     description:
       "Сервис, который превращает текст или PDF в презентацию в стиле PowerPoint.",
     summary:
@@ -85,7 +85,7 @@ export const TOOLS_PRESENTATIONS = [
   {
     name: "GigaChat — Генератор презентаций",
     url: "https://giga.chat/tools/presentations/create",
-    category: "Презентации / Слайды",
+    category: "Слайды → Презентации",
     description:
       "Инструмент от GigaChat для автоматической генерации презентаций по теме.",
     summary:
