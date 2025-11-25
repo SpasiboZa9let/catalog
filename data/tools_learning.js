@@ -2,7 +2,7 @@ export const TOOLS_LEARNING = [
   {
     name: "Ultratext",
     url: "https://ultratext.ru/",
-    category: "Учёба / Тексты / Перефразирование",
+    category: "Учёба и тексты",
     description:
       "Переписывает текст так, чтобы он выглядел естественно и чище, улучшая стиль и структуру.",
     summary:
@@ -19,7 +19,7 @@ export const TOOLS_LEARNING = [
   {
     name: "Toolsmart — Humanize AI",
     url: "https://www.toolsmart.ai/feature-free-humanize-ai",
-    category: "Учёба / Тексты / Перефразирование",
+    category: "Учёба и тексты",
     description:
       "Очищает текст от ИИ-стиля и делает речь более естественной и «человечной».",
     summary:
@@ -36,7 +36,7 @@ export const TOOLS_LEARNING = [
   {
     name: "Structurepedia",
     url: "https://structurepedia.org/",
-    category: "Учёба / Планирование обучения",
+    category: "Учёба и тексты",
     description:
       "Создаёт пошаговые образовательные планы по любой теме: структура, задания, источники.",
     summary:
@@ -53,7 +53,7 @@ export const TOOLS_LEARNING = [
   {
     name: "Accent Spy",
     url: "https://start.boldvoice.com/accent-spy",
-    category: "Учёба / Английский / Произношение",
+    category: "Учёба и тексты",
     description:
       "Тренажёр английского произношения: анализ акустики и советы по исправлению акцента.",
     summary:
@@ -70,7 +70,7 @@ export const TOOLS_LEARNING = [
   {
     name: "Khan Academy",
     url: "https://www.khanacademy.org/",
-    category: "Учёба / Онлайн-курсы",
+    category: "Учёба и тексты",
     description:
       "Большая бесплатная образовательная платформа: математика, физика, биология, программирование.",
     summary:
@@ -87,7 +87,7 @@ export const TOOLS_LEARNING = [
   {
     name: "Bexi AI",
     url: "https://bexi.ai/",
-    category: "Учёба / Тексты / Перефразирование",
+    category: "Учёба и тексты",
     description:
       "Переписывает большие учебные работы — курсовые, статьи, дипломы — создавая полностью новый текст.",
     summary:
