@@ -2,7 +2,7 @@ export const TOOLS_PROMPTS = [
   {
     name: "Prompts.chat",
     url: "https://prompts.chat/",
-    category: "Базы промптов / обучение ИИ",
+    category: "Промпты и обучение ИИ",
     description:
       "Большая библиотека готовых промптов для кода, дизайна, маркетинга, ресёрча и обучения.",
     summary:
@@ -19,7 +19,7 @@ export const TOOLS_PROMPTS = [
   {
     name: "Agents 101 (Devin)",
     url: "https://devin.ai/agents101#introduction",
-    category: "Базы промптов / обучение ИИ",
+    category: "Промпты и обучение ИИ",
     description:
       "Бесплатное руководство по тому, как устроены и работают ИИ-агенты, с примерами и практикой.",
     summary:
@@ -36,7 +36,7 @@ export const TOOLS_PROMPTS = [
   {
     name: "ExplainPaper",
     url: "https://www.explainpaper.com/",
-    category: "Базы промптов / обучение ИИ",
+    category: "Промпты и обучение ИИ",
     description:
       "Сервис, который объясняет сложные научные статьи простым языком прямо из PDF.",
     summary:
@@ -53,7 +53,7 @@ export const TOOLS_PROMPTS = [
   {
     name: "ML Visualized",
     url: "https://ml-visualized.com/index.html",
-    category: "Базы промптов / обучение ИИ",
+    category: "Промпты и обучение ИИ",
     description:
       "Визуальный учебник по ML с интерактивными схемами и наглядными демонстрациями алгоритмов.",
     summary:
@@ -70,7 +70,7 @@ export const TOOLS_PROMPTS = [
   {
     name: "Differentiable Wonderland (arXiv)",
     url: "https://arxiv.org/pdf/2404.17625",
-    category: "Базы промптов / обучение ИИ",
+    category: "Промпты и обучение ИИ",
     description:
       "Исследовательская статья о современных подходах в дифференцируемых моделях и методах ML.",
     summary:
@@ -87,7 +87,7 @@ export const TOOLS_PROMPTS = [
   {
     name: "Microsoft AI Learning Course",
     url: "https://t.co/viU8JXtrAc",
-    category: "Базы промптов / обучение ИИ",
+    category: "Промпты и обучение ИИ",
     description:
       "Бесплатный курс Microsoft по основам ИИ, генеративным моделям, промптингу и безопасности.",
     summary:
