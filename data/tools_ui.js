@@ -2,7 +2,7 @@ export const TOOLS_UI = [
   {
     name: "HeroUI",
     url: "https://heroui.chat/",
-    category: "UI / Сайты / Приложения",
+    category: "сайты",
     description:
       "Генератор сайтов и веб-приложений по текстовому описанию: UI, логика, стили.",
     summary:
@@ -19,7 +19,7 @@ export const TOOLS_UI = [
   {
     name: "Blink",
     url: "https://blink.new/",
-    category: "UI / Сайты / Приложения",
+    category: "сайты",
     description:
       "Создание работающего веб-сервиса за секунды: ИИ пишет код и UI.",
     summary:
@@ -36,7 +36,7 @@ export const TOOLS_UI = [
   {
     name: "Genspark",
     url: "http://genspark.ai/",
-    category: "UI / Сайты / Приложения",
+    category: "сайты",
     description:
       "Генератор сайтов, который заменяет собой полноценный дизайн-процесс.",
     summary:
@@ -53,7 +53,7 @@ export const TOOLS_UI = [
   {
     name: "Blocks",
     url: "https://blocks.diy/",
-    category: "UI / Сайты / Приложения",
+    category: "сайты",
     description:
       "Конструктор приложений: генерирует интерфейс, логику данных, формы, таблицы.",
     summary:
@@ -70,7 +70,7 @@ export const TOOLS_UI = [
   {
     name: "ScreenCoder",
     url: "https://github.com/leigest519/ScreenCoder",
-    category: "UI / Сайты / Приложения",
+    category: "сайты",
     description:
       "ИИ, который превращает нарисованный интерфейс или скриншот в сайт или компонент.",
     summary:
@@ -87,7 +87,7 @@ export const TOOLS_UI = [
   {
     name: "Kimi OK Computer",
     url: "https://www.kimi.com/",
-    category: "UI / Сайты / Приложения",
+    category: "сайты",
     description:
       "Мощная ИИ-платформа: сайты, код, анализ, документы, работа с большими файлами.",
     summary:
@@ -103,7 +103,7 @@ export const TOOLS_UI = [
   {
     name: "EasyCode",
     url: "https://www.easycode.ai/",
-    category: "UI / Сайты / Приложения",
+    category: "сайты",
     description:
       "ИИ-помощник для генерации кода, анализа ошибок и рефакторинга.",
     summary:
@@ -119,7 +119,7 @@ export const TOOLS_UI = [
   {
     name: "Lovable.dev",
     url: "https://lovable.dev/",
-    category: "UI / Сайты / Приложения",
+    category: "сайты",
     description:
       "Генератор приложений: от идеи до кода, UI, архитектуры и деплоя.",
     summary:
