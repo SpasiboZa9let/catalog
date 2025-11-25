@@ -20,6 +20,26 @@ export const TOOLS_GAMES = [
 ];
 
 {
+  name: "Google AI Studio — Apps Showcase",
+  url: "https://aistudio.google.com/apps?source=showcase",
+  category: "Игры",
+  description:
+    "Каталог демонстрационных AI-приложений Google: ассистенты, генераторы, анализаторы и мультимодальные демо на базе Gemini.",
+  summary:
+    "Большая галерея AI-приложений Google: интерактивные примеры работы Gemini для анализа изображений, генерации контента, кодинга и обучения. Можно тестировать и использовать как шаблоны.",
+  howTo: [
+    "Перейди в Google AI Studio → Apps Showcase.",
+    "Изучи категории: Featured, Multimodal, Coding, Education, Tools.",
+    "Открой любое приложение — запустится интерактивная демка.",
+    "Протестируй функционал: загрузи файл, введи запрос, добавь изображение или аудио.",
+    "Чтобы сделать свою версию — нажми «Use as template».",
+    "Перейди в редактор: измени промпты, системные инструкции, поведение.",
+    "Опубликуй свой вариант или используй в проекте."
+  ]
+}
+
+
+{
   name: "Say What You See (Google Arts & Culture)",
   url: "http://artsandculture.google.com/experiment/say-what-you-see/jwG3m7wQShZngw",
   category: "Игры",
