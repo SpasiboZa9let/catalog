@@ -2,7 +2,7 @@ export const TOOLS_VIDEO = [
   {
     name: "Higgsfield",
     url: "https://higgsfield.ai/",
-    category: "Видео / Анимация / Motion",
+    category: "Видео и анимация",
     description:
       "Генератор рекламных и киношных видеороликов по одному текстовому промпту.",
     summary:
@@ -18,7 +18,7 @@ export const TOOLS_VIDEO = [
   {
     name: "Wan Video",
     url: "http://wan.video/",
-    category: "Видео / Анимация / Motion",
+    category: "Видео и анимация",
     description:
       "Модель видеогенерации высокого уровня: длинные клипы, плавные переходы, кино-качество.",
     summary:
@@ -34,7 +34,7 @@ export const TOOLS_VIDEO = [
   {
     name: "Pika Social AI Video",
     url: "https://apps.apple.com/us/app/pika-social-ai-video/id6744712684",
-    category: "Видео / Анимация / Motion",
+    category: "Видео и анимация",
     description:
       "Мобильное приложение для дипфейков и фейслипов с естественной заменой лица.",
     summary:
@@ -50,7 +50,7 @@ export const TOOLS_VIDEO = [
   {
     name: "Runway / ALEPH",
     url: "https://app.runwayml.com/video-tools/teams/tellembitt/ai-tools/generate",
-    category: "Видео / Анимация / Motion",
+    category: "Видео и анимация",
     description:
       "Профессиональный видеогенератор с режимами текст→видео, изображение→видео и движением камеры.",
     summary:
@@ -67,7 +67,7 @@ export const TOOLS_VIDEO = [
   {
     name: "VEED AI Playground",
     url: "https://www.veed.io/ai-playground",
-    category: "Видео / Анимация / Motion",
+    category: "Видео и анимация",
     description:
       "Песочница для сборки видеороликов: генерация, озвучка, монтаж, субтитры.",
     summary:
@@ -83,7 +83,7 @@ export const TOOLS_VIDEO = [
   {
     name: "Dora Studio",
     url: "https://trydorastudio.com/",
-    category: "Видео / Анимация / Motion",
+    category: "Видео и анимация",
     description:
       "Преобразование статистики, таблиц и графиков в кинематографичные motion-ролики.",
     summary:
@@ -99,7 +99,7 @@ export const TOOLS_VIDEO = [
   {
     name: "Aura UI Animation",
     url: "https://aurachat.io/",
-    category: "Видео / Анимация / Motion",
+    category: "Видео и анимация",
     description:
       "Генерация анимаций UI-дизайна: превращает макеты и скриншоты интерфейсов в плавные движения.",
     summary:
@@ -115,7 +115,7 @@ export const TOOLS_VIDEO = [
   {
     name: "Hera Motion",
     url: "https://app.hera.video/motions/",
-    category: "Видео / Анимация / Motion",
+    category: "Видео и анимация",
     description:
       "Motion-анимации и клипы с фотореалистичными персонажами, движениями тела и лица.",
     summary:
@@ -131,7 +131,7 @@ export const TOOLS_VIDEO = [
   {
     name: "Krea 3D Stage",
     url: "https://www.krea.ai/stage",
-    category: "Видео / Анимация / Motion",
+    category: "Видео и анимация",
     description:
       "Генерация 3D-сцен с контролем освещения, камеры и ракурсов.",
     summary:
@@ -147,7 +147,7 @@ export const TOOLS_VIDEO = [
   {
     name: "ToonComposer",
     url: "https://huggingface.co/spaces/TencentARC/ToonComposer",
-    category: "Видео / Анимация / Motion",
+    category: "Видео и анимация",
     description:
       "Создаёт мультяшные и аниме-композиции из любых изображений.",
     summary:
@@ -163,7 +163,7 @@ export const TOOLS_VIDEO = [
   {
     name: "Odyssey 2 (Video)",
     url: "https://experience.odyssey.ml/",
-    category: "Видео / Анимация / Motion",
+    category: "Видео и анимация",
     description:
       "Интерактивные 3D-видео с движением камеры внутри созданного мира.",
     summary:
