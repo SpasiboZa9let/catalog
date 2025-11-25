@@ -28,6 +28,7 @@
   box-shadow: 0 26px 70px rgba(0, 0, 0, 0.85);
   overflow-y: auto;
   z-index: 950;
+  line-height: 1.55;
 }
 
 /* header модалки */
@@ -42,7 +43,7 @@
 
 .modal-title {
   font-size: 18px;
-  margin: 0;
+  margin: 0 0 2px;
   letter-spacing: 0.03em;
 }
 
@@ -81,7 +82,7 @@
   align-items: center;
   gap: 6px;
   font-size: 13px;
-  margin: 4px 0 10px;
+  margin: 4px 0 12px;
   padding: 5px 10px;
   border-radius: var(--radius-pill);
   background: var(--accent-soft);
@@ -124,7 +125,7 @@
 @media (max-width: 640px) {
   .modal-window {
     width: 94%;
-    max-height: 88vh;
+    max-height: 90vh;
     padding: 16px 14px 18px;
   }
 
