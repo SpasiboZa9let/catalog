@@ -2,7 +2,7 @@ export const TOOLS_3D = [
   {
     name: "Odyssey Worlds",
     url: "https://experience.odyssey.world/",
-    category: "3D / Миры / Интерактивы",
+    category: "3D",
     description:
       "Платформа для генерации 3D-миров и сцен по текстовому запросу. Подходит для презентаций, прототипов игр, обучения и визуализации.",
     summary:
