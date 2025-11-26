@@ -18,7 +18,7 @@ export const TOOLS_PRESENTATIONS = [
 {
   name: "ImageEditor Online",
   url: "https://imageeditor.online/",
-  category: "Изображения / Обработка",
+  category: "Слайды → Презентации",
   description:
     "Бесплатный AI-редактор, который работает по текстовым командам: убирает людей, меняет фон, одежду, позу и детали на фото.",
   summary:
