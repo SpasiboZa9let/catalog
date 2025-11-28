@@ -143,14 +143,17 @@ function getFilteredTools() {
   const term = state.search.trim().toLowerCase();
 
   return TOOLS.filter((tool) => {
+    // Обработка категории "Только для учителей"
+    if (state.selectedCategory === "Только для учителей") {
+      return tool.teacher === true;
+    }
+
+    // Остальные категории
     if (state.selectedCategory !== "all" && tool.category !== state.selectedCategory) {
       return false;
     }
 
-    if (state.selectedCategory === "Только для учителей") {
-  return tool.teacher === true;
-}
-
+    // Поиск
     if (!term) return true;
 
     const haystack =
@@ -167,6 +170,7 @@ function getFilteredTools() {
     return haystack.toLowerCase().includes(term);
   });
 }
+
 
 // ====== РЕНДЕР КАРТОЧЕК ======
 
