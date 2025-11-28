@@ -28,7 +28,8 @@ const TOOLS = [
   ...TOOLS_AGENTS,
   ...TOOLS_UTILS,
   ...TOOLS_GAMES,
-  ...TOOLS_PRESENTATIONS
+  ...TOOLS_PRESENTATIONS,
+  ...TOOLS_FOR_TEACHERS
 ];
 
 // ====== СОСТОЯНИЕ ======
