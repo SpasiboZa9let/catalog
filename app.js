@@ -267,9 +267,16 @@ function openModal(tool) {
     els.modalHowtoList.appendChild(li);
   }
 
-  els.modalOverlay.classList.remove("hidden");
-  els.modalWindow.classList.remove("hidden");
-  document.body.classList.add("modal-open");
+  // Добавим спец-оформление для учителей
+if (tool.teacher) {
+  els.modalWindow.classList.add("teacher-highlight");
+} else {
+  els.modalWindow.classList.remove("teacher-highlight");
+}
+
+els.modalOverlay.classList.remove("hidden");
+els.modalWindow.classList.remove("hidden");
+document.body.classList.add("modal-open");
 }
 
 function closeModal() {
