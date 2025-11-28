@@ -12,6 +12,8 @@ import { TOOLS_AGENTS } from "./data/tools_agents.js";
 import { TOOLS_UTILS } from "./data/tools_utils.js";
 import { TOOLS_GAMES } from "./data/tools_games.js";
 import { TOOLS_PRESENTATIONS } from "./data/tools_presentations.js";
+import { TOOLS_FOR_TEACHERS } from "./data/tools_teachers.js";
+
 
 // ====== ОБЪЕДИНЁННЫЙ МАССИВ ======
 
