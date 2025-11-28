@@ -129,6 +129,26 @@
     padding: 16px 14px 18px;
   }
 
+  /* ==== Teacher-Specific Modal Style ==== */
+.teacher-highlight {
+  border: 3px solid #4176d1;
+  box-shadow: 0 0 20px rgba(65, 118, 209, 0.5);
+  position: relative;
+}
+
+.teacher-highlight::before {
+  content: "🎓 Только для учителей";
+  position: absolute;
+  top: -1.6rem;
+  left: 1rem;
+  background: #4176d1;
+  color: white;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+
   .modal-title {
     font-size: 16px;
   }
