@@ -96,6 +96,19 @@ function renderCategories() {
   });
   els.categories.appendChild(allBtn);
 
+  // Кнопка "Только для учителей"
+const teacherBtn = document.createElement("button");
+teacherBtn.className = "category-btn";
+teacherBtn.dataset.category = "Только для учителей";
+teacherBtn.textContent = "🎓 Только для учителей";
+teacherBtn.addEventListener("click", () => {
+  state.selectedCategory = "Только для учителей";
+  updateCategoryButtons();
+  renderTools();
+});
+els.categories.appendChild(teacherBtn);
+
+
   // Остальные категории
   categories.forEach((cat) => {
     const btn = document.createElement("button");
@@ -130,6 +143,10 @@ function getFilteredTools() {
     if (state.selectedCategory !== "all" && tool.category !== state.selectedCategory) {
       return false;
     }
+
+    if (state.selectedCategory === "Только для учителей") {
+  return tool.teacher === true;
+}
 
     if (!term) return true;
 
